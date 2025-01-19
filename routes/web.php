@@ -8,5 +8,5 @@ Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.e
 Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 Route::patch('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
+Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 Route::get('/logs', [TaskController::class, 'logs'])->name('tasks.logs');
-

@@ -70,5 +70,12 @@ class TaskController extends Controller
         $logs = Log::with('task')->paginate(10);
         return view('tasks.logs', compact('logs'));
     }
+
+    public function show(Task $task)
+{
+    return view('tasks.show', compact('task'));
+}
+
+
 }
 

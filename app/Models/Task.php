@@ -9,6 +9,10 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'status'];
-}
+    protected $fillable = ['title', 'description', 'is_completed'];
 
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+}

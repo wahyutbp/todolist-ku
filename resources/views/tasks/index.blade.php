@@ -28,15 +28,12 @@
                 <td>{{ $task->title }}</td>
                 <td>
 
-                <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">Detail</a>
-
                 
-                    <!-- Tombol Pindahkan ke Sudah Dikerjakan -->
-                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin sudah menyelesaikan task ini?')">
-                        @csrf
-                        @method('PATCH')
-                        <button class="btn btn-success">Mark as Done</button>
-                    </form>
+            <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">Detail</a>
+                
+
+
+                    
                     
                     <!-- Tombol Edit -->
                     <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">Edit</a>
@@ -47,6 +44,17 @@
                         @method('DELETE')
                         <button class="btn btn-danger">Delete</button>
                     </form>
+
+
+                    <!-- Tombol Pindahkan ke Sudah Dikerjakan -->
+                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin sudah menyelesaikan task ini?')">
+                        @csrf
+                        @method('PATCH')
+                        <button class="btn btn-success">Mark as Done</button>
+                    </form>
+
+
+
                 </td>
             </tr>
             @endforeach
@@ -68,11 +76,15 @@
                 <td>{{ $task->title }}</td>
                 <td>
                     <!-- Tombol Pindahkan ke Belum Dikerjakan -->
+
+                    <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">Detail</a>
+                    
                     <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin memindahkan task ini ke belum dikerjakan?')">
                         @csrf
                         @method('PATCH')
                         <button class="btn btn-warning">Move to Not Done</button>
                     </form>
+
                 </td>
             </tr>
             @endforeach

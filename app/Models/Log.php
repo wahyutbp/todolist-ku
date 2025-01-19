@@ -11,7 +11,6 @@ class Log extends Model
 
     protected $fillable = ['task_id', 'action'];
 
-    // Tambahkan relasi ke model Task
     public function task()
     {
         return $this->belongsTo(Task::class);
