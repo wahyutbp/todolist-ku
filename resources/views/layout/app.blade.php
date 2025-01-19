@@ -29,5 +29,19 @@
         @yield('content')
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const forms = document.querySelectorAll('form[onsubmit]');
+        forms.forEach(form => {
+            form.addEventListener('submit', function (event) {
+                const confirmMessage = form.getAttribute('onsubmit').replace('return confirm(\'', '').replace('\')', '');
+                if (!confirm(confirmMessage)) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

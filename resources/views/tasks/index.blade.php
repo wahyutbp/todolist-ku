@@ -27,12 +27,18 @@
             <tr>
                 <td>{{ $task->title }}</td>
                 <td>
-                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;">
+                    <!-- Tombol Pindahkan ke Sudah Dikerjakan -->
+                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin sudah menyelesaikan task ini?')">
                         @csrf
                         @method('PATCH')
                         <button class="btn btn-success">Mark as Done</button>
                     </form>
-                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                    
+                    <!-- Tombol Edit -->
+                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">Edit</a>
+                    
+                    <!-- Tombol Hapus -->
+                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus task ini?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger">Delete</button>
@@ -57,7 +63,8 @@
             <tr>
                 <td>{{ $task->title }}</td>
                 <td>
-                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;">
+                    <!-- Tombol Pindahkan ke Belum Dikerjakan -->
+                    <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin memindahkan task ini ke belum dikerjakan?')">
                         @csrf
                         @method('PATCH')
                         <button class="btn btn-warning">Move to Not Done</button>
