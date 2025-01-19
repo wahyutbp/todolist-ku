@@ -27,6 +27,10 @@
             <tr>
                 <td>{{ $task->title }}</td>
                 <td>
+
+                <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info">Detail</a>
+
+                
                     <!-- Tombol Pindahkan ke Sudah Dikerjakan -->
                     <form action="{{ route('tasks.updateStatus', $task->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Apakah Anda yakin sudah menyelesaikan task ini?')">
                         @csrf
